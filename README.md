@@ -1,11 +1,13 @@
 # Home Base
 
-Events, tasks, reminders and groceries for one family, on the home network. One Windows PC is the **home hub** and
-holds the data; every PC in the house runs the same app. Events go out as Google Calendar invites from the family's
-own Google account, and anyone can email themselves a summary of the day. It's free to build and run: no server on
-the internet, no account with us, no advertising and no tracking.
+Home Base is a free family organizer for Windows. Family PCs share events, prioritized tasks and reminders over home
+Wi-Fi, with Google Calendar invites, an on-demand email digest and 10-second undo. No accounts, no paid services, and
+the data stays at home.
 
-By Brian Makos and Scott Makos. MIT licence (see `LICENSE`).
+**For a full explanation of how Home Base works, with screenshots and diagrams, see the
+[Home Base explainer](https://b-rianmakos.github.io/home-base/).**
+
+Made by Brian Makos and Scott Makos. MIT licence (see `LICENSE`).
 
 ![Today](docs/screens/today.png)
 
@@ -31,7 +33,7 @@ reminders, cars and groceries, in **test mode**: events stay on the hub, nobody 
 data goes in `%TEMP%\home-base-demo`, away from any real hub, and it isn't announced on the network.
 
 ```powershell
-git clone <this repository> home-base
+git clone https://github.com/B-rianMakos/home-base.git home-base
 cd home-base
 py -3.13 -m venv .venv
 .venv\Scripts\python -m pip install -e .[dev]
@@ -116,7 +118,7 @@ the hub must be allowed through Windows Firewall on private networks (the instal
 | `tests/` | pytest suite |
 | `packaging/` | PyInstaller spec, Inno Setup script, startup-task template |
 | `tools/` | Release build, personal-information check and its Git hook, licence list, screenshot tool, contrast table, style guide |
-| `site/` | A home page and privacy policy for Google's consent screen, only if Google asks for them |
+| `docs/` | The explainer (`index.html`), the privacy policy (`privacy.html`) and the screenshots, published with GitHub Pages; also the home page and privacy policy for Google's consent screen |
 | `docs/screens/` | The screenshots above (demo data) |
 
 Comments mention requirement IDs such as `WO-FS-014 RL-2`: they point to the work orders the app was built from.
@@ -188,7 +190,7 @@ of October 2026; if a name has moved, use the search bar at the top of the conso
    The status should say **In production**. Google may say the app needs verification: that's fine, **don't submit
    it** (OA-5). Unverified apps work for up to 100 people, who see a one-time "Google hasn't verified this app" screen.
    - **If Google won't publish without a home page and privacy policy:** use the free pages in this repository's
-     `site/` folder (see "Free home page and privacy policy" below), then come back to step 5, fill in the two links
+     `docs/` folder (see "Free home page and privacy policy" below), then come back to step 5, fill in the two links
      and publish again.
 9. **Create the client for the app.** Google Auth Platform → **Clients** → **Create client** → Application type
    **Desktop app** (not "Web application") → name `Home Base hub` → **Create**.
@@ -222,19 +224,21 @@ Each account's connection is a separate token, encrypted on the hub only.
 ### Free home page and privacy policy (only if Google asks for them)
 
 Google's Branding help says home page and privacy policy links "are required for all external production apps", and
-are needed to *submit* for verification. If the console won't publish without them, put the two pages in `site/` on
-GitHub Pages for free (OA-4, route 2):
+are needed to *submit* for verification. The explainer and the privacy policy in `docs/` are published free with
+GitHub Pages, at [https://b-rianmakos.github.io/home-base/](https://b-rianmakos.github.io/home-base/) and [https://b-rianmakos.github.io/home-base/privacy.html](https://b-rianmakos.github.io/home-base/privacy.html). The policy covers each family's own copy.
 
-1. Sign in to https://github.com (free account) and create a public repository named `family-scheduler`.
-2. Upload `site/index.html` and `site/privacy.html` to the repository's root, then **Settings → Pages → Deploy from a
-   branch → main → / (root) → Save**. After a minute the pages are at
-   `https://<your-github-name>.github.io/family-scheduler/` and `…/family-scheduler/privacy.html`.
+To publish your own (for example from your fork):
+
+1. Sign in to https://github.com (free account) and fork this repository, or push your copy to a public repository
+   named `home-base`.
+2. **Settings → Pages → Deploy from a branch → main → /docs → Save**. After a minute the pages are at
+   `https://<your-github-name>.github.io/home-base/` and `…/home-base/privacy.html`.
 3. Prove you own the address: https://search.google.com/search-console → **Add property → URL prefix** →
-   `https://<your-github-name>.github.io/family-scheduler/` → **HTML file** method → download the file, upload it to
-   the same repository, then click **Verify**.
-4. In Google Auth Platform → **Branding**: App home page `https://<your-github-name>.github.io/family-scheduler/`,
-   privacy policy `…/family-scheduler/privacy.html`, and under **Authorized domains** add
-   `<your-github-name>.github.io`. **Save**, then publish (step 8).
+   `https://<your-github-name>.github.io/home-base/` → **HTML file** method → download the file, add it to `docs/`,
+   push, then click **Verify**.
+4. In Google Auth Platform → **Branding**: App home page `https://<your-github-name>.github.io/home-base/`, privacy
+   policy `…/home-base/privacy.html`, and under **Authorized domains** add `<your-github-name>.github.io`. **Save**,
+   then publish (step 8).
 
 ### Why there's no service account
 

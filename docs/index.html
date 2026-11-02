@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home Base</title>
+<meta name="description" content="Home Base: a free family organizer for Windows. Events, tasks, reminders, cars and groceries on the family's own PC, shared over home Wi-Fi.">
+<style>
+:root {
+  --base: #000000; --surface: #121212; --raised: #1e1e1e; --hover: #2a2a2a; --rule: #262626;
+  --text: #ffffff; --muted: #bfbfbf;
+  --amber: #ffb547; --green: #4cd964; --blue: #5aa9ff; --red: #ff5c5c; --lavender: #c3a6ff; --teal: #4fc3b7;
+  --medium: #e6cf4a; --low: #8fb89a; --select: #a8e6a3;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--base); color: var(--text);
+       font: 18px/1.6 "Segoe UI", "Inter", system-ui, -apple-system, sans-serif; }
+a { color: var(--amber); }
+a:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; border-radius: 4px; }
+header.hero { max-width: 1080px; margin: 0 auto; padding: 56px 16px 24px; }
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand svg { flex: none; }
+h1 { font-size: clamp(34px, 6vw, 52px); line-height: 1.1; margin: 0; }
+.tagline { font-size: clamp(20px, 3vw, 24px); color: var(--muted); max-width: 760px; margin: 16px 0 24px; }
+.buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+.button { display: inline-block; padding: 12px 20px; border-radius: 10px; font-weight: 600; text-decoration: none; }
+.button.primary { background: var(--text); color: var(--base); }
+.button.secondary { background: var(--raised); color: var(--text); }
+nav.toc { max-width: 1080px; margin: 0 auto; padding: 8px 16px 0; display: flex; flex-wrap: wrap; gap: 8px 18px;
+          font-size: 16px; }
+nav.toc a { color: var(--muted); text-decoration: none; }
+nav.toc a:hover { color: var(--text); text-decoration: underline; }
+main { max-width: 1080px; margin: 0 auto; padding: 8px 16px 64px; }
+section { background: var(--surface); border-radius: 14px; padding: 28px clamp(18px, 4vw, 36px); margin: 24px 0; }
+h2 { font-size: clamp(26px, 4vw, 32px); margin: 0 0 8px; }
+h3 { font-size: 21px; margin: 24px 0 6px; }
+p, li { color: var(--muted); }
+strong { color: var(--text); }
+.hero-shot { margin: 32px 0 0; }
+figure { margin: 18px 0; }
+figure img { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid var(--rule); }
+figcaption { font-size: 16px; color: var(--muted); margin-top: 8px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 16px; }
+.feature { background: var(--raised); border-radius: 12px; padding: 16px 18px; border-top: 4px solid var(--c, var(--amber)); }
+.feature h3 { margin: 0 0 6px; font-size: 19px; color: var(--text); }
+.feature p { margin: 0; font-size: 16px; }
+.pill { display: inline-block; border-radius: 999px; padding: 1px 10px; font-size: 15px; font-weight: 700; color: var(--base); }
+.steps { counter-reset: step; list-style: none; padding: 0; }
+.steps li { counter-increment: step; position: relative; padding-left: 44px; margin: 12px 0; }
+.steps li::before { content: counter(step); position: absolute; left: 0; top: 2px; width: 30px; height: 30px;
+                    border-radius: 50%; background: var(--amber); color: var(--base); font-weight: 700;
+                    text-align: center; line-height: 30px; font-size: 16px; }
+pre { background: var(--base); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 16px; overflow-x: auto;
+      font: 15px/1.5 Consolas, "Cascadia Mono", monospace; color: var(--text); }
+code { font-family: Consolas, "Cascadia Mono", monospace; font-size: 0.9em; color: var(--text); }
+.diagram { background: var(--base); border: 1px solid var(--rule); border-radius: 12px; padding: 12px; }
+.diagram svg { width: 100%; height: auto; display: block; }
+.note { border-left: 4px solid var(--green); padding: 4px 0 4px 16px; }
+table { border-collapse: collapse; width: 100%; font-size: 16px; }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { color: var(--text); }
+td { color: var(--muted); }
+footer { max-width: 1080px; margin: 0 auto; padding: 0 16px 48px; color: var(--muted); font-size: 16px; }
+@media (max-width: 560px) { body { font-size: 17px; } .hero-shot { margin-top: 24px; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="brand">
+    <svg width="56" height="56" viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="2" y="2" width="60" height="60" rx="14" fill="#ffb547"/>
+      <path d="M32 12 L54 30 V52 H10 V30 Z" fill="#000"/>
+      <rect x="18" y="32" width="8" height="7" rx="1.5" fill="#ffb547"/><rect x="28" y="32" width="8" height="7" rx="1.5" fill="#ffb547"/>
+      <rect x="38" y="32" width="8" height="7" rx="1.5" fill="#ffb547"/><rect x="18" y="42" width="8" height="7" rx="1.5" fill="#ffb547"/>
+      <rect x="28" y="42" width="8" height="7" rx="1.5" fill="#ffb547"/><rect x="38" y="42" width="8" height="7" rx="1.5" fill="#ffb547"/>
+    </svg>
+    <h1>Home Base</h1>
+  </div>
+  <p class="tagline">A free family organizer for Windows. Every PC in the house shares the family's events, tasks,
+    reminders, cars and groceries over home Wi-Fi. No accounts, no subscription, and the data stays at home.</p>
+  <div class="buttons">
+    <a class="button primary" href="https://github.com/B-rianMakos/home-base">Get it on GitHub</a>
+    <a class="button secondary" href="#set-up">How to set it up</a>
+  </div>
+  <figure class="hero-shot">
+    <img src="screens/today.png" width="1180" height="760"
+         alt="The Today page: a bar showing when the family's cars are in use, today's events, and the to-do list with overdue and coming-up tasks">
+    <figcaption>Today: when the cars are needed, today's events and the to-do list. All screenshots use a made-up demo family.</figcaption>
+  </figure>
+</header>
+
+<nav class="toc" aria-label="On this page">
+  <a href="#what">What it is</a><a href="#features">Features</a><a href="#screens">Screenshots</a>
+  <a href="#how">How it works</a><a href="#privacy">Privacy</a><a href="#cost">Cost</a>
+  <a href="#set-up">Set up</a><a href="#google">Google and email</a><a href="#about">About</a>
+</nav>
+
+<main>
+
+<section id="what">
+  <h2>What it is, and who it's for</h2>
+  <p>Home Base is for a household that wants one shared place for <strong>what's on</strong>, <strong>what needs
+    doing</strong> and <strong>what to remember</strong>, on the PCs it already has. One PC at home is the
+    <strong>home hub</strong>: it keeps the family's information. Every other PC in the house runs the same app and
+    connects to the hub over the home Wi-Fi.</p>
+  <p>There's nothing to sign up for. When you open the app, you pick your name and start. Events can go out as
+    real Google Calendar invitations from the family's own Google account, so everyone also sees them on their phone,
+    and anyone can email themselves a summary of the day.</p>
+</section>
+
+<section id="features">
+  <h2>Features</h2>
+  <div class="features">
+    <div class="feature" style="--c: var(--green)"><h3>Events</h3><p>Add an event with its time, place and who's invited. It goes out as a Google Calendar invite, and Home Base shows who has accepted (✓), declined (✗) or not replied yet (?).</p></div>
+    <div class="feature" style="--c: var(--red)"><h3>Clash warnings</h3><p>If a new event overlaps another, Home Base says so before saving, and you choose to save anyway or change the time.</p></div>
+    <div class="feature" style="--c: var(--blue)"><h3>Tasks with priorities</h3><p>High, Medium and Low lists, each in its own colour. A task due within 7 days counts as high priority, and overdue tasks are flagged in red at the top.</p></div>
+    <div class="feature" style="--c: var(--medium)"><h3>Repeating items</h3><p>Events and tasks can repeat every day, week, month or year. A monthly task on the 31st lands on the last day of shorter months, then goes back to the 31st.</p></div>
+    <div class="feature" style="--c: var(--lavender)"><h3>Reminders</h3><p>Short notes for the whole family, like the guest Wi-Fi password or an allergy to tell a babysitter.</p></div>
+    <div class="feature" style="--c: var(--teal)"><h3>Cars</h3><p>Pick which car an event needs. Home Base shows each car as free or in use, warns before a car is double-booked, and Today shows a bar of when the cars are needed.</p></div>
+    <div class="feature" style="--c: var(--green)"><h3>Groceries</h3><p>A shared list in two groups, Food and Items. Tick things off as they're bought, and drag to reorder.</p></div>
+    <div class="feature" style="--c: var(--amber)"><h3>Undo and Trash</h3><p>Clear all gives 10 seconds to undo. Removed tasks and reminders wait 30 days in Trash, where they can be restored, or deleted for good with the same 10-second undo.</p></div>
+    <div class="feature" style="--c: var(--muted)"><h3>History</h3><p>Who added, changed, finished or removed what, and when, for the last 30 days.</p></div>
+    <div class="feature" style="--c: var(--blue)"><h3>Email digest on demand</h3><p>"Send me my digest" emails you today's events, the cars in use, overdue and high-priority tasks, and who hasn't replied yet. Only when you ask: never on a schedule.</p></div>
+    <div class="feature" style="--c: var(--select)"><h3>Calendar</h3><p>A week view and a month view of events and tasks, with each month in its own colour.</p></div>
+    <div class="feature" style="--c: var(--low)"><h3>Live on every PC</h3><p>A change on one PC shows on every other PC within a few seconds, with no refresh button to press.</p></div>
+  </div>
+</section>
+
+<section id="screens">
+  <h2>Screenshots</h2>
+  <p>These all come from the app's demo mode, with a made-up family: Riley, Alex, Sam and Jordan.</p>
+  <div class="grid">
+    <figure><img src="screens/start-screen.png" width="488" height="446" alt="The start screen: pick your email from the family list, with no password" loading="lazy"><figcaption>Pick your name. No password on the home network.</figcaption></figure>
+    <figure><img src="screens/events.png" width="1180" height="760" alt="The Events page: upcoming events by month, with their cars, how often they repeat, and replies" loading="lazy"><figcaption>Events, with cars, repeats and replies.</figcaption></figure>
+    <figure><img src="screens/tasks.png" width="1180" height="760" alt="The Tasks page: overdue tasks, then High, Medium and Low priority lists" loading="lazy"><figcaption>Tasks by priority.</figcaption></figure>
+    <figure><img src="screens/calendar.png" width="1180" height="760" alt="The Calendar week view with green event blocks and blue task blocks" loading="lazy"><figcaption>The week at a glance.</figcaption></figure>
+    <figure><img src="screens/add-event.png" width="1180" height="760" alt="The New event form: when, where, who's invited, and which car" loading="lazy"><figcaption>Adding an event: when, where, who and which car.</figcaption></figure>
+    <figure><img src="screens/which-car.png" width="1180" height="760" alt="Which car? Each car as a card, marked Free or In use" loading="lazy"><figcaption>Which car? Free or in use, at a glance.</figcaption></figure>
+    <figure><img src="screens/reminders.png" width="1180" height="760" alt="The Reminders page with three family notes" loading="lazy"><figcaption>Reminders for everyone.</figcaption></figure>
+    <figure><img src="screens/groceries.png" width="1180" height="760" alt="The Groceries page with Food and Items groups" loading="lazy"><figcaption>Groceries, in Food and Items.</figcaption></figure>
+    <figure><img src="screens/trash.png" width="1180" height="760" alt="The Trash page with a removed task that can be restored or deleted for good" loading="lazy"><figcaption>Trash: restore, or delete for good.</figcaption></figure>
+  </div>
+</section>
+
+<section id="how">
+  <h2>How it works</h2>
+  <p>One PC is the <strong>home hub</strong>. It's on all the time, starts by itself with Windows, and keeps
+    everything in one small database file (SQLite) on that PC. Every family PC runs the Home Base app, which finds
+    the hub on the home network by itself and talks to it over the Wi-Fi. When someone changes something, every
+    other PC shows it within a few seconds.</p>
+  <div class="diagram" role="img" aria-label="Diagram: three family PCs connect over home Wi-Fi to the home hub, which keeps the database. Only the hub talks to the internet, and only to the family's own Google Calendar and Gmail accounts.">
+    <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, sans-serif">
+      <rect x="20" y="20" width="560" height="380" rx="18" fill="#121212" stroke="#4cd964" stroke-width="2" stroke-dasharray="8 6"/>
+      <text x="44" y="56" fill="#4cd964" font-size="20" font-weight="700">Your home network</text>
+      <g fill="#1e1e1e" stroke="#bfbfbf" stroke-width="2">
+        <rect x="50" y="90" width="150" height="70" rx="12"/><rect x="50" y="190" width="150" height="70" rx="12"/><rect x="50" y="290" width="150" height="70" rx="12"/>
+      </g>
+      <g fill="#ffffff" font-size="18" font-weight="600" text-anchor="middle">
+        <text x="125" y="122">Family PC</text><text x="125" y="222">Family PC</text><text x="125" y="322">Family PC</text>
+      </g>
+      <g fill="#bfbfbf" font-size="15" text-anchor="middle">
+        <text x="125" y="145">Home Base app</text><text x="125" y="245">Home Base app</text><text x="125" y="345">Home Base app</text>
+      </g>
+      <rect x="330" y="140" width="220" height="170" rx="14" fill="#1e1e1e" stroke="#ffb547" stroke-width="3"/>
+      <text x="440" y="178" fill="#ffb547" font-size="20" font-weight="700" text-anchor="middle">Home hub PC</text>
+      <text x="440" y="206" fill="#ffffff" font-size="16" text-anchor="middle">always on, starts</text>
+      <text x="440" y="226" fill="#ffffff" font-size="16" text-anchor="middle">with Windows</text>
+      <rect x="370" y="244" width="140" height="46" rx="10" fill="#000" stroke="#5aa9ff" stroke-width="2"/>
+      <text x="440" y="273" fill="#5aa9ff" font-size="16" font-weight="600" text-anchor="middle">Database</text>
+      <g stroke="#4cd964" stroke-width="3" fill="none">
+        <path d="M200 125 C 270 125, 280 190, 330 200"/><path d="M200 225 L 330 225"/><path d="M200 325 C 270 325, 280 260, 330 250"/>
+      </g>
+      <text x="265" y="214" fill="#4cd964" font-size="15" text-anchor="middle">Wi-Fi</text>
+      <rect x="650" y="90" width="220" height="80" rx="12" fill="#1e1e1e" stroke="#5aa9ff" stroke-width="2"/>
+      <text x="760" y="124" fill="#ffffff" font-size="18" font-weight="600" text-anchor="middle">Google Calendar</text>
+      <text x="760" y="148" fill="#bfbfbf" font-size="15" text-anchor="middle">invites and replies</text>
+      <rect x="650" y="270" width="220" height="80" rx="12" fill="#1e1e1e" stroke="#c3a6ff" stroke-width="2"/>
+      <text x="760" y="304" fill="#ffffff" font-size="18" font-weight="600" text-anchor="middle">Gmail</text>
+      <text x="760" y="328" fill="#bfbfbf" font-size="15" text-anchor="middle">digest, when asked</text>
+      <g stroke="#bfbfbf" stroke-width="2.5" fill="none" stroke-dasharray="6 6">
+        <path d="M550 190 C 600 170, 610 140, 650 132"/><path d="M550 260 C 600 280, 610 305, 650 310"/>
+      </g>
+      <text x="612" y="232" fill="#bfbfbf" font-size="14" text-anchor="middle">internet,</text>
+      <text x="612" y="250" fill="#bfbfbf" font-size="14" text-anchor="middle">only if set up</text>
+    </svg>
+  </div>
+
+  <h3>What happens when you add an event</h3>
+  <div class="diagram" role="img" aria-label="Data flow: the app sends the new event to the hub; the hub checks for clashes, saves it in the database, and sends the Google Calendar invite from the family's account; Google emails the invitees; replies come back to the hub, and every family PC shows the event within a few seconds.">
+    <svg viewBox="0 0 900 250" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, sans-serif">
+      <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#ffb547"/></marker></defs>
+      <g fill="#1e1e1e" stroke="#bfbfbf" stroke-width="2">
+        <rect x="10" y="40" width="160" height="90" rx="12"/><rect x="250" y="40" width="190" height="90" rx="12"/>
+        <rect x="520" y="40" width="160" height="90" rx="12"/><rect x="740" y="40" width="150" height="90" rx="12"/>
+      </g>
+      <g font-size="18" font-weight="600" fill="#ffffff" text-anchor="middle">
+        <text x="90" y="78">You, in the app</text><text x="345" y="78">The home hub</text>
+        <text x="600" y="78">Google Calendar</text><text x="815" y="78">Invitees</text>
+      </g>
+      <g font-size="15" fill="#bfbfbf" text-anchor="middle">
+        <text x="90" y="104">Add event, Save</text><text x="345" y="100">checks for clashes,</text><text x="345" y="120">saves it</text>
+        <text x="600" y="104">from the family's</text><text x="600" y="122">own account</text><text x="815" y="104">get an email</text>
+      </g>
+      <g stroke="#ffb547" stroke-width="3" fill="none" marker-end="url(#arrow)">
+        <path d="M170 85 L 246 85"/><path d="M440 85 L 516 85"/><path d="M680 85 L 736 85"/>
+        <path d="M815 130 C 815 200, 400 215, 360 135"/>
+      </g>
+      <text x="600" y="200" fill="#ffb547" font-size="15" text-anchor="middle">Replies come back to the hub</text>
+      <text x="345" y="235" fill="#4cd964" font-size="15" text-anchor="middle">Every family PC shows it within seconds</text>
+    </svg>
+  </div>
+  <p>Without a Google account connected, the hub can still run in <strong>test mode</strong>, where events stay on
+    the hub and nobody is invited. Tasks, reminders, groceries, History and Trash never need Google.</p>
+</section>
+
+<section id="privacy">
+  <h2>Privacy</h2>
+  <ul>
+    <li><strong>Your data stays at home,</strong> on the hub PC. There's no Home Base server on the internet, no
+      account with us, no advertising and no tracking. The authors never see any family's data.</li>
+    <li><strong>Only the accounts you choose.</strong> Home Base talks to the internet only to send your events through
+      your own Google Calendar account and, when you ask, your digest through your own Gmail. Both are off until you
+      set them up.</li>
+    <li><strong>Kept 30 days.</strong> History, Trash, finished tasks and past events are cleared after 30 days. The
+      hub keeps its last 7 nightly backups.</li>
+    <li><strong>Secrets are locked to the hub PC.</strong> Google sign-ins and the Gmail app password are encrypted,
+      and the key is sealed to that PC by Windows.</li>
+    <li><strong>Home network only.</strong> The hub only answers PCs on the home network; it isn't meant to face the
+      internet.</li>
+  </ul>
+  <p>Read the full <a href="privacy.html">privacy policy</a>.</p>
+</section>
+
+<section id="cost">
+  <h2>Cost</h2>
+  <p class="note"><strong>Free.</strong> Home Base is free and open source (MIT licence). It needs no paid service:
+    a free Google account is enough for invites and the digest, and the Google Cloud project it uses needs no billing
+    account. It runs on PCs you already have.</p>
+</section>
+
+<section id="set-up">
+  <h2>Requirements and set up</h2>
+  <table>
+    <tr><th>You need</th><td>Windows 10 or 11 on every PC, all on the same home Wi-Fi (set as a <strong>Private</strong> network). One PC that can stay on as the hub.</td></tr>
+    <tr><th>To run from source</th><td>Python 3.12 or later, and Git.</td></tr>
+    <tr><th>To build the installer</th><td>Inno Setup 6 (free).</td></tr>
+    <tr><th>For invites and the digest</th><td>Optional: a Google account (Gmail) for the family.</td></tr>
+  </table>
+
+  <h3>Try it in two minutes, with the demo family</h3>
+  <pre>git clone https://github.com/B-rianMakos/home-base.git
+cd home-base
+py -3.13 -m venv .venv
+.venv\Scripts\python -m pip install -e .[dev]
+.venv\Scripts\python -m family_scheduler.hub demo</pre>
+  <p>Then, in a second window in the same folder:</p>
+  <pre>$env:FS_HUB = "127.0.0.1"
+.venv\Scripts\python -m family_scheduler.app</pre>
+  <p>Demo mode keeps its data in a separate temporary folder and doesn't invite anyone or send any email.</p>
+
+  <h3>Setting it up for your family</h3>
+  <ol class="steps">
+    <li><strong>Build the installer</strong> with <code>tools\build_release.py</code> (or run from source, as in the README).</li>
+    <li>On the PC that will be the hub, run it and choose <strong>This PC is the home hub</strong>. It starts by itself with Windows from then on.</li>
+    <li>Open Home Base. The first time, it asks for your family: the admin's Gmail address and the other members' addresses.</li>
+    <li>On every other PC, run the same installer and choose <strong>Connect to the home hub</strong>. The app finds the hub by itself.</li>
+    <li>Everyone picks their name, and you're ready.</li>
+  </ol>
+  <p>The <a href="https://github.com/B-rianMakos/home-base#readme">README</a> has every step, moving the hub to
+    another PC, and troubleshooting.</p>
+</section>
+
+<section id="google">
+  <h2>Connecting Google Calendar and the digest email</h2>
+  <p>Both use <strong>your own</strong> accounts, and both are optional.</p>
+  <h3>Google Calendar invites (about 15 minutes, once)</h3>
+  <ol class="steps">
+    <li>Create your own free Google Cloud project, turn on the Google Calendar API, and set up the consent screen. No billing account or website is needed.</li>
+    <li>Create an OAuth client of type <strong>Desktop app</strong> and download its <code>client_secret.json</code>.</li>
+    <li>In Home Base on the hub PC: <strong>Family &amp; Settings → Choose Google client file</strong>, then <strong>Connect</strong> and sign in with the family's Google account.</li>
+  </ol>
+  <h3>The digest email (about 5 minutes)</h3>
+  <ol class="steps">
+    <li>Turn on 2-Step Verification on the admin's Google account.</li>
+    <li>Create an <strong>app password</strong> at Google Account → Security → App passwords.</li>
+    <li>In Home Base on the hub PC: <strong>Family &amp; Settings → Digest email</strong>, paste it, and send a test email.</li>
+  </ol>
+  <p>The README walks through each screen in detail. The app also has a built-in <strong>Setup guide</strong> under
+    Family &amp; Settings.</p>
+</section>
+
+<section id="about">
+  <h2>About</h2>
+  <p>Made by <strong>Brian Makos and Scott Makos</strong>.</p>
+  <p>Home Base is open source under the MIT licence. The code, the README and the licence are on
+    <a href="https://github.com/B-rianMakos/home-base">GitHub</a>. Questions and ideas are welcome on the
+    repository's Issues page.</p>
+</section>
+
+</main>
+
+<footer>
+  <p>Home Base 1.12.0 · <a href="privacy.html">Privacy policy</a> · <a href="https://github.com/B-rianMakos/home-base">Source on GitHub</a> · <a href="#what">Back to top</a></p>
+</footer>
+</body>
+</html>

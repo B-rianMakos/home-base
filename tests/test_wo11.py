@@ -294,7 +294,7 @@ def test_no_family_scheduler_left_in_what_a_person_sees() -> None:  # HB-1
             if "Family Scheduler" in text and not any(a.replace("\\", "") in text for a in ALLOWED_OLD_NAME):
                 found.append(f"{path.name}: {text[:60]}")
     assert found == []
-    for name in ("site/index.html", "site/privacy.html", "packaging/install-notes.txt", "packaging/hub-task.xml"):
+    for name in ("docs/index.html", "docs/privacy.html", "packaging/install-notes.txt", "packaging/hub-task.xml"):
         assert "Family Scheduler" not in (ROOT / name).read_text(encoding="utf-8"), name
     iss = (ROOT / "packaging" / "installer.iss").read_text(encoding="utf-8")
     assert "AppName=Home Base" in iss and "OutputBaseFilename=HomeBaseSetup-" in iss
