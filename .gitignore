@@ -1,0 +1,39 @@
+.venv/
+__pycache__/
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+build/
+dist/
+build.log
+client_secret*.json
+*.db
+*.db-wal
+*.db-shm
+packaging/app.ico
+dist-*/
+
+# WO-FS-010 SE-1: secrets and private files never go into the repository.
+config.ini
+*.ini
+!packaging/*.ini
+!config.example.ini
+.env
+*.env
+*.log
+*.bundle
+*.pem
+*.key
+token*.json
+*.sqlite
+.family-scheduler-blocklist.txt
+*blocklist*.txt
+screenshots/
+shots*/
+# SE-2: only this project's source. The private folders beside it are never added.
+Deliverables/
+Work Orders/
+Explainer/
+Scheduler Bot/
+*.exe

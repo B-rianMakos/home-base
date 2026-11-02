@@ -1,0 +1,12 @@
+Home Base
+
+Install it on every PC in the house. On the PC that will hold the family's data and stay on, choose "This PC is the home hub". On every other PC, choose "Connect to the home hub".
+
+If Windows showed "Windows protected your PC" before this screen, that's expected: the installer isn't signed with a paid certificate. You clicked More info, then Run anyway.
+
+On the hub PC:
+- Settings > System > Power: set Sleep to Never when plugged in.
+- The hub starts with Windows, even when nobody is signed in.
+- After installing, open Home Base > Family & Settings to connect Google Calendar (sign in as the admin account) and add the Gmail app password for the digest.
+
+The hub only accepts connections from the home network. Never forward its port (8765) on the router.
