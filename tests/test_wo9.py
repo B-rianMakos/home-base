@@ -219,9 +219,9 @@ def test_the_guide_text_and_links() -> None:  # SG-4, SG-6, SG-8
         ["https://myaccount.google.com/apppasswords"]
     assert guide.to_html("Click **Save** at https://myaccount.google.com/security.") == \
         'Click <b>Save</b> at <a href="https://myaccount.google.com/security">myaccount.google.com/security</a>.'
-    readme = (Path(__file__).resolve().parents[1] / "README.md").read_text(encoding="utf-8")
+    readme = (Path(__file__).resolve().parents[1] / "SETUP.md").read_text(encoding="utf-8")
     for phrase in ("https://myaccount.google.com/apppasswords", "Go to Home Base (unsafe)",
-                   "Connect to the home hub", "More info → Run anyway"):  # the README says the same
+                   "Connect to the home hub", "More info → Run anyway"):  # SETUP.md says the same
         assert phrase in readme
 
 

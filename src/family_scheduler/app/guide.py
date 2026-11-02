@@ -1,7 +1,7 @@
 """The Setup guide's text and its live statuses (WO-FS-009 section 2). Plain data, no Qt.
 
 SG-8: every word of the guide is here, so it can be changed without touching the page. It says the same as the
-README's "Setting up the digest email", "Google setup → Part 2" and "Setting up the house". Change both together.
+SETUP.md's "Setting up the digest email", "Google setup → Part 2" and "Setting up the house". Change both together.
 In the text, **bold** is bold, and a web address starting with https:// becomes a link with a copy button (SG-6).
 WO-FS-010 TX-1: no address is written here. {admin} and {second} are filled in from the hub's settings when the page
 opens (fill()), or read "the admin account" and "the second account" until they're set.
@@ -75,7 +75,7 @@ SECTIONS = [
         "Connect each account once, in the app on the hub PC.",
         [
             ("Check the client file", [
-                "You need the Google client file (a .json file) from the Google Cloud setup in the README. It must "
+                "You need the Google client file (a .json file) from the Google Cloud setup in SETUP.md. It must "
                 "be a **Desktop app** file: opened in Notepad, it starts with {\"installed\". A file that starts with "
                 "{\"web\" won't work.",
             ]),
